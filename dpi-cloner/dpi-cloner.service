@@ -1,0 +1,9 @@
+[Unit]
+Description=Circuit Shield DPI Cloner Service
+ 
+[Service]
+ExecStart=/home/pi/Circuit-Shield/dpi-cloner/dpi-cloner
+ 
+[Install]
+WantedBy=multi-user.target
+Alias=dpi-cloner.service

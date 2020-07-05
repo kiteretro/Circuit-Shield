@@ -1,0 +1,9 @@
+[Unit]
+Description=Circuit Shield HUD/OSD Service
+ 
+[Service]
+ExecStart=/home/pi/Circuit-Shield/cs-hud/cs-hud
+ 
+[Install]
+WantedBy=multi-user.target
+Alias=cs-hud.service

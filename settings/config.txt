@@ -1,0 +1,114 @@
+# NOTICE: This file is managed by the Circuit Sword software and is used to
+# facilitate HDMI/DPI switching. Do not edit any lines that start with "# CS .."
+
+# The following settings are used by the software to determine the state
+# For instance, the STATE of 'IDLE' means that this file is complete and won't
+#   change. The state of 'REBOOTING_TO_HDMI' means this file is in transition to
+#   becoming HDMI enabled and so you should NOT edit the file at all in this case.
+# This works by removing 1x '#' symbol from each line within the HDMI block. This
+#   means anything with one '#' will end up being enabled. Anything with 2x '#'s
+#   will remain disabled (e.g. comments, or alternative modes)
+# If all goes wrong, restore the config.txt file from the backup:
+#   sudo cp ~/Circuit-Sword/settings/config.txt /boot/config.txt
+
+# CS CONFIG VERSION: 1.0
+# CS CONFIG STATE: IDLE
+
+# For more options and information see
+# http://www.raspberrypi.org/documentation/configuration/config-txt.md
+# Some settings may impact device functionality. See link above for details
+# Additional overlays and parameters are documented /boot/overlays/README
+
+# Some settings from the orignal config.txt
+gpu_mem_256=128
+gpu_mem_512=256
+gpu_mem_1024=256
+overscan_scale=1
+
+##########################
+#### GENERIC SETTINGS ####
+##########################
+
+# Disable low voltage warning when on 3.3v
+avoid_warnings=2
+
+# Enable safe shutdown
+dtoverlay=gpio-poweroff,gpiopin=39,active_low="y"
+
+# Disable onboard audio
+dtparam=audio=off
+
+# Enable SDIO wifi
+dtoverlay=sdio,poll_once=false
+
+# SD overclock (ONLY IF SD SUPPORTS IT)
+#dtoverlay=sdtweak,overclock_50=100
+
+# Always enable the HDMI interface
+hdmi_force_hotplug=1
+
+#######################
+#### HDMI SETTINGS ####
+#######################
+# CS START HDMI SETTINGS
+
+## Enable HDMI audio
+#dtparam=audio=on
+#hdmi_drive=2
+
+## Disable overscan
+#disable_overscan=1
+
+## Set HDMI output to 1280x720 (720p)
+#hdmi_group=1
+#hdmi_mode=4
+
+### Set HDMI output to 1920x1080 (1080p)
+##hdmi_group=1
+##hdmi_mode=16
+
+### Set HDMI output to 800x480
+##hdmi_group=2
+##hdmi_mode=87
+##hdmi_cvt=800 480 60 6 0 0 0
+
+# CS END HDMI SETTINGS
+
+#######################
+#### DPI SETTINGS #####
+#######################
+# CS START DPI SETTINGS
+
+# Enable DPI
+dtoverlay=dpi18
+overscan_left=0
+overscan_right=0
+overscan_top=0
+overscan_bottom=0
+enable_dpi_lcd=1
+display_default_lcd=1
+dpi_group=2
+dpi_mode=87
+
+# Enable 320x240 custom display mode (2.6")
+framebuffer_width=320
+framebuffer_height=240
+display_rotate=2
+dpi_output_format=90389 #RGB
+hdmi_timings=320 0 0 20 0 240 0 0 2 0 0 0 0 60 0 6400000 1
+
+# CS END DPI SETTINGS
+
+#########################
+#### AUDIO SETTINGS #####
+#########################
+
+# I2S enable
+dtoverlay=i2s-gpio28-31
+dtoverlay=hifiberry-dac
+dtoverlay=i2s-mmap
+
+# Enable I2C
+#dtoverlay=i2c1-bcm2708,sda1_pin=44,scl1_pin=45,pin_func=6
+dtoverlay=i2c0-bcm2708,pins_44_45=1
+#dtparam=i2c1,pins_44_45=1

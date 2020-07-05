@@ -1,3 +1,4 @@
-# Circuit-Shield
+# Circuit Shield Software
+Power management and safe shutdown software for the Circuit Shield.
 
-Repository being updated and will be ready soon...
+## [Download](https://github.com/kiteretro/Circuit-Shield/releases)
