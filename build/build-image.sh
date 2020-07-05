@@ -132,7 +132,7 @@ execute "mount -o loop,offset=4194304 $OUTFILE $MOUNTFAT32"
 execute "mount -o loop,offset=63963136 $OUTFILE $MOUNTEXT4"
 
 # Install
-execute "../install.sh YES $BRANCH $MOUNTFAT32 $MOUNTEXT4"
+execute "Circuit-Shield/install.sh YES $BRANCH $MOUNTFAT32 $MOUNTEXT4"
 
 # Patch for PLUS
 execute "unzip -o -d $MOUNTFAT32 $MOUNTEXT4$BINDIR/settings/pi_plus_20190130.zip"
