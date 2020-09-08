@@ -49,7 +49,7 @@ GITHUBPROJECT="Circuit-Shield"
 GITHUBURL="https://github.com/kiteretro/$GITHUBPROJECT"
 PIHOMEDIR="$DEST/home/pi"
 BINDIR="$PIHOMEDIR/$GITHUBPROJECT"
-USER="giles"
+USER="pi"
 
 if [[ $2 != "" ]] ; then
   BRANCH=$2
